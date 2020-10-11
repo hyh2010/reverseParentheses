@@ -17,6 +17,9 @@ UTEST_OBJECTS = $(UTEST_SOURCES:.cpp=.$(OBJ_SUFFIX))
 all: build
 debug: CPPFLAGS += -g
 debug: build
+gcov: CPPFLAGS += -O0 -g -fprofile-arcs -ftest-coverage
+gcov: LDFLAGS += --coverage
+gcov: build
 build: $(UTEST_TARGET)
 
 clean:
@@ -26,7 +29,7 @@ GTEST_ROOT = /home/hyh/googletest/latest
 GTEST_DIR = $(GTEST_ROOT)/googletest
 GTEST_LIB_DIR = $(GTEST_ROOT)/lib
 
-CPPFLAGS += -I $(SRC_PATH) -I $(GTEST_DIR)/include
+CPPFLAGS += -I $(SRC_PATH) -isystem $(GTEST_DIR)/include
 
 TESTLIBS = $(GTEST_LIB_DIR)/libgtest.a  $(GTEST_LIB_DIR)/libgtest_main.a -lpthread
 
