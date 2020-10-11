@@ -39,14 +39,10 @@ F (OutputStrategyInterface & outputStrategy, std::string::const_iterator & it, c
             throw syntaxError;
         }
     }
-    else if (is_valid_character(*it))
+    else
     {   // F->character
         outputStrategy.character(*it);
         ++it; // consume the character
-    }
-    else
-    {
-        throw syntaxError;
     }
 }
 
