@@ -49,10 +49,9 @@ F (OutputStrategyInterface & outputStrategy, std::string::const_iterator & it, c
 static void
 E_prime (OutputStrategyInterface & outputStrategy, std::string::const_iterator & it, const std::string::const_iterator & end)
 {
-    if (in_first_F(it, end))
+    while (in_first_F(it, end))
     {   // E' -> FE'
         F (outputStrategy, it, end);
-        E_prime (outputStrategy, it, end);
     }
 
     // E' -> epislon
